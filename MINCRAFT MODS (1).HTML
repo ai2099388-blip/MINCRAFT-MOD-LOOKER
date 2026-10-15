@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bedrock Mod Finder Pro</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family:Arial,sans-serif;
+min-height:100vh;
+padding:20px;
+background:linear-gradient(
+-45deg,
+#00ffff,
+#6d28d9,
+#111827,
+#06b6d4
+);
+background-size:400% 400%;
+animation:bg 12s ease infinite;
+color:white;
+}
+
+@keyframes bg{
+0%{background-position:0% 50%}
+50%{background-position:100% 50%}
+100%{background-position:0% 50%}
+}
+
+.container{
+max-width:1200px;
+margin:auto;
+background:rgba(0,0,0,.6);
+backdrop-filter:blur(12px);
+border:1px solid rgba(255,255,255,.15);
+border-radius:24px;
+padding:25px;
+box-shadow:
+0 0 30px rgba(0,255,255,.4),
+0 0 60px rgba(138,43,226,.3);
+}
+
+h1{
+text-align:center;
+margin-bottom:10px;
+}
+
+.subtitle{
+text-align:center;
+opacity:.8;
+margin-bottom:20px;
+}
+
+#search{
+width:100%;
+padding:14px;
+border:none;
+border-radius:12px;
+font-size:16px;
+margin-bottom:15px;
+}
+
+.counter{
+margin-bottom:15px;
+font-weight:bold;
+color:cyan;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:16px;
+}
+
+.card{
+background:rgba(255,255,255,.08);
+border:1px solid rgba(0,255,255,.4);
+border-radius:18px;
+padding:16px;
+transition:.3s;
+}
+
+.card:hover{
+transform:translateY(-6px);
+box-shadow:
+0 0 20px cyan,
+0 0 40px purple;
+}
+
+.title{
+font-size:20px;
+font-weight:bold;
+margin-bottom:10px;
+color:cyan;
+}
+
+.badge{
+display:inline-block;
+padding:4px 8px;
+margin-right:6px;
+margin-top:6px;
+border-radius:20px;
+font-size:12px;
+background:#0ea5e9;
+}
+
+.download{
+display:inline-block;
+margin-top:12px;
+padding:10px 16px;
+text-decoration:none;
+color:white;
+border-radius:10px;
+background:linear-gradient(45deg,cyan,purple);
+font-weight:bold;
+}
+
+.download:hover{
+opacity:.9;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<h1>🎮 Bedrock Mod Finder Pro</h1>
+<p class="subtitle">Search Minecraft Bedrock Mods</p>
+
+<input
+id="search"
+type="text"
+placeholder="Search by mod, creator or category..."
+onkeyup="searchMods()"
+>
+
+<div id="count" class="counter">
+Mods Found: 6
+</div>
+
+<div id="mods" class="grid">
+
+<div class="card">
+<div class="title">Just Vein Miner</div>
+<p>Creator: FoxyFall</p>
+<span class="badge">Utility</span>
+<span class="badge">Bedrock</span>
+<a class="download"
+href="https://mcpedl.com/category/mods/addons/"
+target="_blank">Download</a>
+</div>
+
+<div class="card">
+<div class="title">Just Tree Capitator</div>
+<p>Creator: FoxyFall</p>
+<span class="badge">Vanilla+</span>
+<span class="badge">Bedrock</span>
+<a class="download"
+href="https://mcpedl.com/category/mods/addons/"
+target="_blank">Download</a>
+</div>
+
+<div class="card">
+<div class="title">Simple Guns</div>
+<p>Creator: Blockforge Labs</p>
+<span class="badge">Weapons</span>
+<span class="badge">Bedrock</span>
+<a class="download"
+href="https://mcpedl.com/category/mods/addons/"
+target="_blank">Download</a>
+</div>
+
+<div class="card">
+<div class="title">Dynamic Lighting</div>
+<p>Creator: FoxyFall</p>
+<span class="badge">Visual</span>
+<span class="badge">Bedrock</span>
+<a class="download"
+href="https://mcpedl.com/category/mods/addons/"
+target="_blank">Download</a>
+</div>
+
+<div class="card">
+<div class="title">Ore Scanner 2.0</div>
+<p>Creator: Tohidsayyed43</p>
+<span class="badge">Mining</span>
+<span class="badge">Bedrock</span>
+<a class="download"
+href="https://mcpedl.com/category/mods/addons/"
+target="_blank">Download</a>
+</div>
+
+<div class="card">
+<div class="title">Ender Teleport Anchor</div>
+<p>Creator: MrDavid13</p>
+<span class="badge">Utility</span>
+<span class="badge">Bedrock</span>
+<a class="download"
+href="https://mcpedl.com/category/mods/addons/"
+target="_blank">Download</a>
+</div>
+
+</div>
+
+</div>
+
+<script>
+function searchMods(){
+
+const search =
+document.getElementById("search")
+.value.toLowerCase();
+
+const cards =
+document.querySelectorAll(".card");
+
+let visible = 0;
+
+cards.forEach(card=>{
+
+const text =
+card.textContent.toLowerCase();
+
+if(text.includes(search)){
+card.style.display="block";
+visible++;
+}else{
+card.style.display="none";
+}
+
+});
+
+document.getElementById("count").textContent =
+"Mods Found: " + visible;
+
+}
+</script>
+
+</body>
+</html>
